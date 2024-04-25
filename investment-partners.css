@@ -1,8 +1,4 @@
 
-.sqs-block.image-block .image-caption-wrapper p {
-    line-height: 1 !important;
-    margin-top: 0px;
-}
 /* Global Styles */
 h2,
 h3,
@@ -80,7 +76,7 @@ nav#mainNavigation .external a {
 }
 
 .background-svg {
-	opacity: .9;
+	opacity: .4;
   background-image: url("https://bantanaoriginbucket.s3.amazonaws.com/Mask+Group+4.svg");
   background-repeat: no-repeat;
   height: 100%;
@@ -98,6 +94,7 @@ nav#mainNavigation .external a {
     z-index: 2;
     top: 0;
     left: 0;
+    opacity: .5;
     height: 100%;
     background-position-x: 100%;
     width: 100%;
@@ -258,7 +255,7 @@ nav#mainNavigation .external a {
 
 .home-row div {
 		padding: 10px;
-    backdrop-filter: blur(10px);
+    // backdrop-filter: blur(10px);
 }
 
 .home-content-column {
@@ -393,6 +390,10 @@ footer {
   .home-wrapper {
     padding-top: 40px;
   }
+  
+ // .col.sqs-col-3.span-3 {
+ //   width: calc(90vw / 3) !important;
+	// }
 
   .footer-row {
     display: column !important;
@@ -413,6 +414,13 @@ footer {
   .footer-row.justify-end {
     justify-content: center !important;
   }
+}
+
+@media (min-width: 840px) and (max-width: 1200px) {
+	 .sqs-row {
+ 	padding-right: 40px !important;
+ 	padding-left: 40px !important;
+ }
 }
 
 @media (max-width: 1080px) {
@@ -555,7 +563,12 @@ span.bio-text p {
 	.col.sqs-col-3.span-3:hover .bio-popup {
 	  opacity: 1;
 	  visibility: visible;
-	  transform: translate(-50%, -10%);
+	  transform: translate(-50%, 0%);
+	}
+	
+	.col.sqs-col-3.span-3:hover .bio-linker {
+		opacity: 1;
+		transform: translateY(0);
 	}
 	
 	.leader-focus {
@@ -570,6 +583,29 @@ span.bio-text p {
 		animation-duration: 800ms;
 		cursor: cursor;
 	}
+	
+	.bio-linker {
+		transition-duration: 200ms;
+		transform: translateY(-20);
+		opacity: 0;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.25em;
+    position: absolute;
+    right: 10px;
+    top: 0;
+}
+
+.bio-linker a {
+	color: #2f2f2f !important;
+}
+
+.image-caption-wrapper p {
+    font-size: .875em;
+    line-height: 1.25em;
+    margin-top: 0px;
+    margin-bottom: 5px;
+}
 }
 
 
@@ -603,6 +639,12 @@ span.bio-text p {
     padding-bottom: 20px !important;
     border-bottom: solid 2px #f7f7f7;
 }
+.image-caption p {
+	text-align: center !important;
+}
+span.bio-text p {
+	text-align: center !important;
+}
 }
     
 .grid-lines {
@@ -617,11 +659,21 @@ span.bio-text p {
 }
 
 .line {
+	display: block !important;
+	// display: none;
   width: 2px;          /* Sets the width of each line */
   // background: red;
   z-index: 0;
  background: linear-gradient(to bottom, #ededed, transparent);
   height: 100%;        /* Full height to stretch from top to bottom of the container */
+}
+
+.sqs-block {
+	padding-top: 0px;
+}
+
+.image-caption {
+    position: relative !important;
 }
 
 // .sqs-block {
