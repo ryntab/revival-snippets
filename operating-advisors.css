@@ -505,7 +505,7 @@ span.bio-text p {
 	line-height: 1.4;
 }
 
-@media (min-width: 650px) {
+@media (min-width: 840px) {
 	
 	#page {
 	max-width: 1200px;
@@ -569,7 +569,10 @@ span.bio-text p {
 }
 
 
-@media (max-width: 640px) {
+@media (max-width: 840px) {
+	.sqs-block {
+    z-index: 2;
+}
 	.image-block-wrapper {
 		    width: 85%;
     margin: auto;
@@ -597,26 +600,26 @@ span.bio-text p {
     border-bottom: solid 2px #f7f7f7;
 }
 }
+    
+.grid-lines {
+	height: 100vh;
+  position: absolute;  /* Absolutely positions the container */
+  top: 0;              /* Aligns the top of the container with the top of the nearest positioned ancestor */
+  left: 0;             /* Aligns the left of the container with the left of the nearest positioned ancestor */
+  right: 0;            /* Aligns the right of the container with the right of the nearest positioned ancestor */
+  bottom: 0;           /* Aligns the bottom of the container with the bottom of the nearest positioned ancestor */
+  display: flex;       /* Uses flexbox to align children elements */
+  justify-content: space-between; /* Distributes the lines with equal space in between */
+}
 
-    .row.sqs-row:nth-child(n+2) .col::after {
-        content: "";
-        width: 1px;
-            height: 200%;
-        top: 0;
-        left: 0;
-    background: linear-gradient(to bottom, #ededed, transparent);
-        z-index: 2;
-        transform: translateY(-100%);
-        position: fixed;
-    }
-      .row.sqs-row:nth-child(n+2) .col::before {
-        content: "";
-        width: 1px;
-          height: 200%;
-        top: 0;
-        right: 0;
-      background: linear-gradient(to bottom, #ededed, transparent);
-        // background: linear-gradient(to bottom, #ededed, transparent);
-        z-index: 2;
-        position: fixed;
-    }
+.line {
+  width: 2px;          /* Sets the width of each line */
+  // background: red;
+  z-index: 0;
+ background: linear-gradient(to bottom, #ededed, transparent);
+  height: 100%;        /* Full height to stretch from top to bottom of the container */
+}
+
+// .sqs-block {
+// 	position: unset !important;
+// }
