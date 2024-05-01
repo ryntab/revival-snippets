@@ -1,13 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 /* Global Styles */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p, a {
+* {
   font-family: "Montserrat", sans-serif !important;
   font-style: normal;
 }
@@ -30,7 +24,7 @@ a {
   min-height: 100vh;
   overflow-x: hidden;
   padding-top: 0px;
-  background-color: #141414;
+  background-color: #000;
 }
 
 h1,
@@ -163,7 +157,6 @@ nav#mainNavigation .external a {
   max-width: 100%;
   overflow-x: hidden;
   padding: 0px !important;
-  background-color: #141414;
 }
 
 .entry-title {
@@ -189,7 +182,7 @@ nav#mainNavigation .external a {
 }
 
 .background-svg-dark {
-    opacity: .1;
+    opacity: .2;
     background-image: url(https://bantanaoriginbucket.s3.amazonaws.com/Mask+Group+4.svg);
     background-repeat: no-repeat;
     height: 100%;
