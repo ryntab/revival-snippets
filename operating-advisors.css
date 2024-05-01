@@ -1,9 +1,6 @@
 
 /* Global Styles */
-h2,
-h3,
-h4,
-h1 {
+* {
   font-family: "Montserrat", sans-serif !important;
 }
 
@@ -76,7 +73,7 @@ nav#mainNavigation .external a {
 }
 
 .background-svg {
-	opacity: .9;
+	opacity: .4;
   background-image: url("https://bantanaoriginbucket.s3.amazonaws.com/Mask+Group+4.svg");
   background-repeat: no-repeat;
   height: 100%;
@@ -94,6 +91,7 @@ nav#mainNavigation .external a {
     z-index: 2;
     top: 0;
     left: 0;
+    opacity: .5;
     height: 100%;
     background-position-x: 100%;
     width: 100%;
@@ -235,7 +233,7 @@ nav#mainNavigation .external a {
 }
 
 /* Home Sections Styles */
-.home-container {
+.lead-container {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -254,7 +252,7 @@ nav#mainNavigation .external a {
 
 .home-row div {
 		padding: 10px;
-    backdrop-filter: blur(10px);
+    // backdrop-filter: blur(10px);
 }
 
 .home-content-column {
@@ -366,7 +364,7 @@ footer {
     margin-bottom: 20px;
   }
 
-  .home-container {
+  .lead-container {
     margin: unset !important;
     width: 100%;
   }
@@ -389,6 +387,10 @@ footer {
   .home-wrapper {
     padding-top: 40px;
   }
+  
+ // .col.sqs-col-3.span-3 {
+ //   width: calc(90vw / 3) !important;
+	// }
 
   .footer-row {
     display: column !important;
@@ -411,12 +413,19 @@ footer {
   }
 }
 
+@media (min-width: 840px) and (max-width: 1200px) {
+	 .sqs-row {
+ 	padding-right: 40px !important;
+ 	padding-left: 40px !important;
+ }
+}
+
 @media (max-width: 1080px) {
   .cta-black {
     width: 100%;
   }
 
-  .home-container {
+  .lead-container {
     margin: unset !important;
     padding: 0;
   }
@@ -475,6 +484,9 @@ footer {
   span.copyright {
     font-size: 10px;
   }
+  .bio-linker {
+		position: unset !important;
+	}
 }
 
 @media (max-width: 768px) {
@@ -508,7 +520,7 @@ span.bio-text p {
 @media (min-width: 840px) {
 	
 	#page {
-	max-width: 1200px;
+	max-width: 1200px !important;
 	padding-left: 0px;
 	padding-right: 0px;
 }
@@ -525,6 +537,7 @@ span.bio-text p {
   position: absolute;
   z-index: 10;
   top: 100%;
+  cursor: pointer;
   left: 50%;
   transform: translateX(-50%);
   opacity: 0;
@@ -537,13 +550,16 @@ span.bio-text p {
   // width: 300px; /* Adjust the width as needed */
 }
 
+.image-block-wrapper {
+	cursor: pointer;
+}
+
 .col.sqs-col-3.span-3 {
 	position: relative !important;
 }
 
 	.col.sqs-col-3.span-3:hover {
 		background-color: #f7f7f7;
-			cursor: pointer;
 		transition-duration: 200ms;
 		box-shadow: 0px 0px 20px rgb(0 0 0 / 6%), 0 6px 6px rgb(0 0 0 / 5%);
 	}
@@ -551,7 +567,12 @@ span.bio-text p {
 	.col.sqs-col-3.span-3:hover .bio-popup {
 	  opacity: 1;
 	  visibility: visible;
-	  transform: translate(-50%, -10%);
+	  transform: translate(-50%, 0%);
+	}
+	
+	.col.sqs-col-3.span-3:hover .bio-linker {
+		opacity: 1;
+		transform: translateY(0);
 	}
 	
 	.leader-focus {
@@ -566,6 +587,29 @@ span.bio-text p {
 		animation-duration: 800ms;
 		cursor: cursor;
 	}
+	
+	.bio-linker {
+		transition-duration: 200ms;
+		transform: translateY(-20);
+		opacity: 0;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.25em;
+    position: absolute;
+    right: 10px;
+    top: 0;
+}
+
+.bio-linker a {
+	color: #2f2f2f !important;
+}
+
+.image-caption-wrapper p {
+    font-size: .875em;
+    line-height: 1.25em;
+    margin-top: 0px;
+    margin-bottom: 5px;
+}
 }
 
 
@@ -599,6 +643,15 @@ span.bio-text p {
     padding-bottom: 20px !important;
     border-bottom: solid 2px #f7f7f7;
 }
+.image-caption p {
+	text-align: center !important;
+}
+span.bio-text p {
+	text-align: center !important;
+}
+ .bio-linker {
+		display: none;
+	}
 }
     
 .grid-lines {
@@ -613,6 +666,8 @@ span.bio-text p {
 }
 
 .line {
+
+	display: none;
   width: 2px;          /* Sets the width of each line */
   // background: red;
   z-index: 0;
@@ -621,5 +676,21 @@ span.bio-text p {
 }
 
 // .sqs-block {
+// 	padding-top: 0px;
+// }
+
+.image-caption {
+    position: relative !important;
+}
+
+// .sqs-block {
 // 	position: unset !important;
 // }
+
+
+.bleed-banner {
+    position: fixed;
+    left: 0;
+    top: 0;
+    margin-top: 100px;
+}
