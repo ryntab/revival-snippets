@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
         generateColumnContent(column, index)
   
       var imageCaption = column.querySelector('.image-caption');
-      var imageBlockWrapper = column.querySelector('.image-block-wrapper');
+      var imageBlockWrapper = column.querySelector('.sqs-block-content');
       var bioLink = column.querySelector('#bio-link');
   
       if (bioLink && imageBlockWrapper) {
@@ -17,25 +17,23 @@ document.addEventListener('DOMContentLoaded', function () {
         imageBlockWrapper.parentNode.insertBefore(bioLinkElement, imageBlockWrapper);
         bioLinkElement.appendChild(imageBlockWrapper);
       }
-  
-      if (imageCaption) {
-        var bioLinker = document.createElement('span');
-        bioLinker.classList.add('bio-linker', 'animate-link');
-  
-        var bioLink = column.querySelector('#bio-link');
-        if (bioLink) {
-          var linkText = "View";
-          var linkHref = bioLink.getAttribute('href');
-          var bioLinkElement = document.createElement('a');
-          bioLinkElement.textContent = linkText;
-          bioLinkElement.setAttribute('href', '#');
-          bioLinkElement.setAttribute('data-src', `#profile-popup-${index + 1}`);
-          bioLinkElement.setAttribute('data-fancybox', 'profile-gallery');
-          bioLinker.appendChild(bioLinkElement);
-        }
-  
-        imageCaption.appendChild(bioLinker);
-      }
+      
+if (imageCaption) {
+    var bioLinker = document.createElement('span');
+    bioLinker.classList.add('bio-linker', 'animate-link');
+
+    var bioLink = column.querySelector('#bio-link');
+    if (bioLink) {
+        var linkText = "View";
+        var bioLinkElement = document.createElement('a');
+        bioLinkElement.textContent = linkText;
+        bioLinkElement.href = "javascript:void(0);"; // Prevent default 
+        bioLinker.appendChild(bioLinkElement);
+    }
+
+    imageCaption.appendChild(bioLinker);
+}
+
   
       column.addEventListener('mouseover', function () {
         columns.forEach(function (col) {
