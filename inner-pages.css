@@ -177,6 +177,13 @@ nav#mainNavigation .external a {
   color: rgb(255 255 255 / 90%);
 }
 
+#collection-662c01e045f91314ffb3c1d4 .row.sqs-row  {
+	max-width: 1200px !important; 
+	  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+}
+
 .col.sqs-col-12.span-12 > :nth-child(2) {
   margin-top: 40px;
 }
@@ -192,6 +199,16 @@ nav#mainNavigation .external a {
     z-index: 0;
     bottom: 0;
     left: 0;
+}
+
+input, textarea {
+    background-color: transparent !important;
+    border: #595959 2px solid !important;
+    color: white !important;
+}
+
+.form-item span {
+    color: white;
 }
 
 @media (max-width: 1200px) {
@@ -241,25 +258,38 @@ nav#mainNavigation .external a {
 }
 
 @media only screen and (max-width: 640px) {
-	#block-yui_3_17_2_1_1714505845123_2511 {
-		padding-top: 0px !important;
-	}
-	
-	.col.sqs-col-12.span-12 > :nth-child(1), .col.sqs-col-12.span-12 > :nth-child(1),  .col.sqs-col-12.span-12 > :nth-child(1) .sqs-image-shape-container-element  {
-	  height: 120px !important;
-	 }
-	 
-    .col.sqs-col-12.span-12 > :nth-child(2) {
-    	position: relative;
-    	z-index: 2;
-        padding-top: -40px !important;
-        margin-left: 6% !important;
-        margin-right: 6% !important;
-        background: black;
-        padding-bottom: 40px;
-    }
-    
-    .sqs-block-html .sqs-block-content, .sqs-block-html .sqs-html-content {
-    	padding-bottom: 20px;
-    }
+  #block-yui_3_17_2_1_1714505845123_2511,
+  #block-yui_3_17_2_1_1714505884041_2931 {
+    padding-top: 0px !important;
+  }
+
+  .col.sqs-col-12.span-12 > :nth-child(1),
+  .col.sqs-col-12.span-12 > :nth-child(1),
+  .col.sqs-col-12.span-12 > :nth-child(1) .sqs-image-shape-container-element {
+    height: 120px !important;
+    width: auto;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .col.sqs-col-12.span-12 > :nth-child(1) img {
+    height: 100%;
+    width: auto;
+    object-fit: cover;
+  }
+
+  .col.sqs-col-12.span-12 > :nth-child(2) {
+    position: relative;
+    z-index: 2;
+    margin-top: -40px !important;
+    margin-left: 6% !important;
+    margin-right: 6% !important;
+    background: black;
+    padding-bottom: 40px;
+  }
+
+  .sqs-block-html .sqs-block-content,
+  .sqs-block-html .sqs-html-content {
+    padding-bottom: 20px;
+  }
 }
