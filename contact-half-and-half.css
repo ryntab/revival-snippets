@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
-/* Global Styles */
+/* Global Styles */ 
 * {
   font-family: "Montserrat", sans-serif !important;
   font-style: normal;
@@ -258,6 +258,10 @@ button.button.sqs-system-button.sqs-editable-button.form-submit-button.sqs-butto
     border: none;
 }
 
+span.description.required {
+    color: #cbcbcb !important;
+}
+
 
 @media (max-width: 1200px) {
 	
@@ -306,19 +310,33 @@ button.button.sqs-system-button.sqs-editable-button.form-submit-button.sqs-butto
 }
 
 @media only screen and (max-width: 640px) {
+	
+		h1 {
+		font-size: 28px !important;
+	}
+	
+	.row.sqs-row {
+    text-align: center !important;
+}
+
   #block-yui_3_17_2_1_1714505845123_2511,
   #block-yui_3_17_2_1_1714505884041_2931 {
     padding-top: 0px !important;
   }
 
+   button.button.sqs-system-button.sqs-editable-button.form-submit-button.sqs-button-element--primary {
+  	width: 100%;
+  }
+
   .col.sqs-col-12.span-12 > :nth-child(1),
   .col.sqs-col-12.span-12 > :nth-child(1),
   .col.sqs-col-12.span-12 > :nth-child(1) .sqs-image-shape-container-element {
-    height: 120px !important;
+    height: 200px !important;
     width: auto;
     position: relative;
     overflow: hidden;
   }
+  
 
   .col.sqs-col-12.span-12 > :nth-child(1) img {
     height: 100%;
@@ -329,16 +347,39 @@ button.button.sqs-system-button.sqs-editable-button.form-submit-button.sqs-butto
   .col.sqs-col-12.span-12 > :nth-child(2) {
     position: relative;
     z-index: 2;
-    margin-top: -40px !important;
-    margin-left: 6% !important;
-    margin-right: 6% !important;
+    margin-top: 0px !important;
+    // margin-left: 6% !important;
+    // margin-right: 6% !important;
     background: black;
     padding-bottom: 20px !important;
   }
+  
+   .newsletter-block .newsletter-form-wrapper--alignCenter.newsletter-form-wrapper {
+  	padding: 0px !important;
+  }
+  
+   .horizontalrule-block {
+  	display: none;
+  }
+  
+    .col.sqs-col-12.span-12 > :nth-child(1) img {
+    height: 100%;
+    width: auto;
+    object-fit: cover;
+  }
+  
 
   .sqs-block-html .sqs-block-content,
   .sqs-block-html .sqs-html-content {
     padding-bottom: 20px;
+  }
+  
+ .newsletter-block .newsletter-form-button-wrapper {
+  	width: 100% !important;
+  }
+  
+  .newsletter-block .newsletter-form-button {
+  	width: 100% !important;
   }
   
     .newsletter-block .newsletter-form-name-fieldset{
