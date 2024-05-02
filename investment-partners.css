@@ -727,7 +727,7 @@ span.bio-text p {
 		background-color: #f7f7f7;
 	}
 	.sqs-block.code-block.sqs-block-code {
-		padding-top: 0px;
+		padding-top: 0px !important;
 		margin-top: -10px;
 	}
 	.col.sqs-col-3.span-3:hover .bio-popup {
