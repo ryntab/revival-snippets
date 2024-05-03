@@ -270,6 +270,12 @@ hr {
 
 }
 
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .grid-sizer,
 .grid-item {
   width: calc(33.33% - 20px); /* Adjust the width to account for the gutter */
@@ -277,7 +283,6 @@ hr {
 }
 
 .grid-item {
-  float: left;
   margin-right: 20px; /* Add margin right for horizontal spacing */
 }
 
@@ -288,15 +293,15 @@ hr {
 @media screen and (max-width: 768px) {
   .grid-sizer,
   .grid-item {
-    width: calc(50% - 10px); /* Show 2 columns on medium-sized screens */
+    width: calc(50% - 20px); /* Show 2 columns on medium-sized screens */
   }
   
   .grid-item:nth-child(3n) {
-    margin-right: 10px; /* Reset margin right for medium-sized screens */
+    margin-right: 20px; /* Reset margin right for medium-sized screens */
   }
   
   .grid-item:nth-child(2n) {
-    margin-right: 0; /* Remove margin right for every second item on medium-sized screens */
+    margin-right: 0 !important; /* Remove margin right for every second item on medium-sized screens */
   }
 }
 
@@ -305,5 +310,9 @@ hr {
   .grid-item {
     width: 100%; /* Show 1 column on small screens */
     margin-right: 0; /* Remove margin right for small screens */
+  }
+  
+  .grid-item:nth-child(2n) {
+    margin-right: 0 !important; /* Remove margin right for every second item on small screens */
   }
 }
