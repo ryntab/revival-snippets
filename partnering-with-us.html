@@ -1,4 +1,16 @@
-<style>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const toggles = document.querySelectorAll('.sqs-block-content h2');
+      toggles.forEach(toggle => {
+        toggle.addEventListener('click', function() {
+          const ul = this.nextElementSibling;
+          this.querySelector('svg').classList.toggle('flipped-chevron')
+        });
+      });
+    });
+    
+    </script>
+    <style>
     @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
     
     /* Global Styles */
@@ -6,18 +18,28 @@
       font-family: "Montserrat", sans-serif !important;
       font-style: normal;
     }
-    //   h1, h2, h3, h4, h5, h6 {
-    // 	color: white !important;
-    // }
+      h1, h2, h3, h4, h5, h6 {
+        color: white !important;
+    }
     
-    // a {
-    // 	color: white !important;
-    // 	font-weight: 600;
-    // }
+    a {
+        color: white !important;
+        font-weight: 600;
+    }
     
-    // strong {
-    //   color: white;
-    //   }
+     strong {
+       color: white;
+      }
+      
+      .chevron.flipped-chevron {
+      transform: rotate(0deg);
+      transition: transform 0.3s ease-in-out;
+    }
+    
+    .chevron {
+         transition: transform 0.3s ease-in-out;
+         transform: rotate(180deg);
+    }
     
     #page {
       width: 100%;
@@ -27,20 +49,20 @@
       padding-top: 0px;
     }
     
-    // h1,
-    // .entry-title {
-    //   color: white !important;
-    // }
+    h1,
+    .entry-title {
+      color: white !important;
+    }
     
-    // p {
-    //   color: rgba(255, 255, 255, 0.8);
-    // }
+    p {
+      color: rgba(255, 255, 255, 0.8);
+    }
     
     .col.sqs-col-12.span-12 > :nth-child(1) ~ * {
       max-width: 1200px;
       margin-left: auto;
       margin-right: auto;
-      // color: rgb(255 255 255 / 90%);
+      color: rgb(255 255 255 / 90%);
     }
     
     .col.sqs-col-12.span-12 > :nth-child(1) {
@@ -157,42 +179,33 @@
       max-width: 100%;
       overflow-x: hidden;
       padding: 0px !important;
-    }
-    
-    #siteWrapper {
-          // background-color: #000 !important;
+      background-color: #000;
     }
     
     .entry-title {
-      // color: white !important;
+      color: white !important;
     }
     
     .col.sqs-col-12.span-12 > :nth-child(1) ~ * {
       max-width: 1200px;
       margin-left: auto;
       margin-right: auto;
-      // color: rgb(255 255 255 / 90%);
+      color: rgb(255 255 255 / 90%);
     }
     
-    // #collection-662c01e045f91314ffb3c1d4 .row.sqs-row  {
-    // 	max-width: 1200px !important; 
-    // 	  margin-left: auto;
-    //   margin-right: auto;
-    //   margin-top: 40px;
-    // }
+    #collection-662c01e045f91314ffb3c1d4 .row.sqs-row  {
+        max-width: 1200px !important; 
+          margin-left: auto;
+      margin-right: auto;
+      margin-top: 40px;
+    }
     
     .col.sqs-col-12.span-12 > :nth-child(2) {
       margin-top: 40px;
     }
     
-    .row.sqs-row:not(:first-of-type) {
-        max-width: 1200px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    
     .background-svg-dark {
-        opacity: .1;
+        opacity: .2;
         background-image: url(https://bantanaoriginbucket.s3.amazonaws.com/Mask+Group+4.svg);
         background-repeat: no-repeat;
         height: 100%;
@@ -205,60 +218,14 @@
     }
     
     input, textarea {
-            font-size: 16px !important;
         background-color: transparent !important;
         border: #595959 2px solid !important;
-        // color: white !important;
-        padding: 16px 20px !important;
+        color: white !important;
     }
     
-    // hr {
-    // 	background-color: rgb(72 76 85) !important;
-    // }
-    
-    // input::placeholder {
-    // 	color: #8d8d8d !important;
-    // }
-    
-    // ::selection {
-    //   background-color: white !important;
-    //   color: black !important;
-    // }
-    
-    // .form-item span {
-    //     color: white;
-    // }
-    
-    // .newsletter-form-header-description p {
-    // 	color: white !important;
-    // }
-    
-    // .newsletter-block {
-    // 	background-color: #141414;
-    // }
-    
-    .newsletter-form-button-wrapper.submit-wrapper {
-        margin: 0px !important;
+    .form-item span {
+        color: white;
     }
-    
-    .newsletter-block .newsletter-form-button {
-        font-weight: 500 !important;
-        margin: 12px 0 0 0;
-    }
-    
-    button.button.sqs-system-button.sqs-editable-button.form-submit-button.sqs-button-element--primary {
-            padding: 13px 26px;
-        font-size: 12px;
-        font-weight: 600;
-        font-style: normal;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        color: #fff;
-        background-color: #272727;
-        border-color: #272727;
-        border: none;
-    }
-    
     
     @media (max-width: 1200px) {
         
@@ -334,42 +301,12 @@
         margin-left: 6% !important;
         margin-right: 6% !important;
         background: black;
-        padding-bottom: 20px !important;
+        padding-bottom: 40px;
       }
     
       .sqs-block-html .sqs-block-content,
       .sqs-block-html .sqs-html-content {
         padding-bottom: 20px;
       }
-      
-        .newsletter-block .newsletter-form-name-fieldset{
-          display: flex !important;
-          flex-direction: column !important;
-      }
-      
-      .newsletter-block.newsletter-form-field-wrapper {
-          display: flex !important;
-          flex-direction: column !important;
-      }
-      
-      .newsletter-block.newsletter-form-name-fieldset {
-          display: flex !important;
-          flex-direction: column !important;
-      }
-      
-      .newsletter-block.newsletter-form-fields-wrapper {
-          display: flex !important;
-          flex-direction: column !important;
-      }
-      
-      .newsletter-block .newsletter-form-fields-wrapper {
-        display: flex !important; 
-        flex-direction: column !important;
-        width: 100%;
-        }
-        
-        input, textarea {
-            padding: 10px 20px !important;
-        }
     }
     </style>
