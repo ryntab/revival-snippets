@@ -1,484 +1,990 @@
-<a id="bio-link"></a>
-<div id="data-source" style="display: none">
-    <div id="long-bio">
-        <p>Most recently, Bill was the Chief Financial Officer of Aerin
-            Medical Inc., which makes products to treat chronic nasal conditions non-invasively. </p>
-        <p>Prior to Aerin, Bill spent 13 years as CFO and Executive VP of
-            Finance for On-X Life Technologies, Inc., a heart surgery medical device company which was sold
-            to
-            Artvivion (CryoLife) in 2016. </p>
-        <p>Early in his career, Bill spent nine years specializing in
-            healthcare with the public accounting firm PriceWaterhouseCoopers (formerly Price Waterhouse)
-            followed by
-            executive management positions with PhyCor, Inc., Physicians Trust, Inc., US Orthopedics, Inc.,
-            and Acxiom
-            Corporation. </p>
-        <p>Bill served on the boards of directors of Apollo Endosurgery Inc.
-            and Reata Pharmaceuticals Inc, both publicly-traded companies, and chaired their Audit
-            Committees until
-            their acquisitions by Boston Scientific and Biogen, respectively. Bill has also served on
-            numerous other
-            boards of directors or advisory boards including public, private, non-profit and private
-            equity/venture
-            capital.</p>
-    </div>
-    <span id="profile-name">Bill Mccellan</span>
-    <div id="profile-mini">
-        <div class="image-subtitle-wrapper">
-            <div class="image-subtitle sqs-dynamic-text">
-                <p class="">Advisor, Distalmotion</p>
-                <p class="">CFO, Aerin Medical, Inc. </p>
-                <p class="">CFO and Executive VP, On-X Life Technologies (Acquired) </p>
-                <p class="">Director, Apollo Endosurgery (Acquired) Director, Reata
-                    Pharmaceuticals (Acquired) </p>
-                <p class="">Price Waterhouse Coopers (PWC)</p>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css">
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var columns = document.querySelectorAll('.col.sqs-col-3.span-3');
+    columns.forEach(function (column, index) {
+        
+        generateColumnContent(column, index)
+  
+      var imageCaption = column.querySelector('.image-caption');
+      var imageBlockWrapper = column.querySelector('.sqs-block-content');
+      var bioLink = column.querySelector('#bio-link');
+  
+      if (bioLink && imageBlockWrapper) {
+        var linkHref = bioLink.getAttribute('href');
+        var bioLinkElement = document.createElement('a');
+        bioLinkElement.setAttribute('href', linkHref);
+        bioLinkElement.setAttribute('data-src', `#profile-popup-${index + 1}`);
+        bioLinkElement.setAttribute('data-fancybox', 'profile-gallery'); // Set the
+        imageBlockWrapper.parentNode.insertBefore(bioLinkElement, imageBlockWrapper);
+        bioLinkElement.appendChild(imageBlockWrapper);
+      }
+      
+if (imageCaption) {
+    var bioLinker = document.createElement('span');
+    bioLinker.classList.add('bio-linker', 'animate-link');
+
+    var bioLink = column.querySelector('#bio-link');
+    if (bioLink) {
+        var linkText = "View";
+        var bioLinkElement = document.createElement('a');
+        bioLinkElement.textContent = linkText;
+        bioLinkElement.href = "javascript:void(0);"; // Prevent default 
+        bioLinker.appendChild(bioLinkElement);
+    }
+
+    imageCaption.appendChild(bioLinker);
+}
+
+  
+      column.addEventListener('mouseover', function () {
+        columns.forEach(function (col) {
+          if (col !== column) {
+            col.classList.add('leader-focus');
+          }
+        });
+      });
+  
+      column.addEventListener('mouseout', function () {
+        columns.forEach(function (col) {
+          col.classList.remove('leader-focus');
+        });
+      });
+    });
+  
+    Fancybox.bind('[data-fancybox="profile-gallery"]', {
+        type: 'inline',
+        src: function (fancybox, slide) {
+          return slide.src;
+        },
+        Thumbs: false,
+        Hash: false,
+      	Toolbar: false,
+    });
+  
+  });
+  
+  const generateColumnContent = (column, index) => {
+    const columnID = 'profile-popup-' + (index + 1);
+    //const dataSourceDiv = column.querySelector('#data-source');
+    const dataSourceDiv = $(column).find('#data-source');
+    const destinationContainer = $('#hidden-data');
+    
+      const image = $(column).find(".sqs-image-shape-container-element img"); 
+      const imageSrc = image.attr("src");
+    
+    if (dataSourceDiv) {
+        const profileName = $(dataSourceDiv).find('#profile-name').html();
+        const profileSource = $(dataSourceDiv).find('#profile-source').attr('href')
+      const profileMiniElement = $(dataSourceDiv).find('#profile-mini').html();
+      const profileLongElement = $(dataSourceDiv).find('#long-bio').html();
+      
+      // Find the image element in the column
+      const imageElement = column.querySelector('.sqs-block-image-figure img');
+  
+      if (profileMiniElement && profileLongElement && imageSrc) {
+        const profileMiniContent = profileMiniElement
+        const profileLongContent = profileLongElement
+      
+        const fancyboxContent = `
+              <div id="${columnID}">
+              <div class="popup-container">
+                <div class="popup-row">
+                  <div class="popup-column">
+                    <div class="inner-popup-row">
+                      <div class="inner-column">
+                        <h2 class="profile-name">${profileName}</h2>
+                        <div class="popup-mini-bio">${profileMiniContent}</div>
+                      </div>
+                      <div class="inner-column">
+                        <img id="popup-image" src="${imageSrc}" alt="Profile Image" style="width:100%">
+                      </div>
+                    </div>
+                    <div class="inner-popup-row">
+                      <div class="inner-popup-text">${profileLongContent}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-        </div>
-    </div>
-</div>
+        `;
+        $(dataSourceDiv).append(fancyboxContent);
+      }
+    }
+  };
+</script>
+<style>
+.inner-popup-text h3 {
+	text-transform: none !important;
+	letter-spacing: unset !important;
+}
+
+.inner-popup-text p {
+	line-height: 1.6;
+}
+.popup-mini-bio {
+	margin-top: unset !important;
+}
+
+.fancybox__container  {
+  overflow-y: auto !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: transparent transparent !important;
+}
+
+.fancybox__container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.fancybox__container::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.fancybox__container::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+.fancybox__container:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+/* Global Styles */
+* {
+	font-family: 'Montserrat', sans-serif !important;
+}
+
+// #page {
+//   max-width: 100% !important;
+//   overflow: hidden;
+//   padding: unset !important;
+// }
+
+// .row.sqs-row {
+// 	max-width: 1400px;
+// 	margin: auto;
+// }
+
+.header-inner {
+	max-width: 1400px !important;
+}
+
+header#header {
+	background-color: black !important;
+
+	top: 0 !important;
+}
+
+#footer {
+	display: none;
+}
+
+nav#mainNavigation .external a {
+	border: solid 1px white;
+	margin: 0;
+	padding-left: 16px;
+	padding-right: 16px;
+}
+
+.align-left {
+	align-items: flex-start;
+}
+
+.align-right {
+	align-items: flex-end;
+}
+
+.animate-link a {
+	padding-bottom: 4px;
+	position: relative;
+	text-decoration: none;
+}
+
+.animate-link a::after {
+	background-color: #000;
+	bottom: -3px;
+	content: '';
+	height: 2px;
+	left: 0;
+	opacity: 0;
+	position: absolute;
+	transition:
+		opacity 0.1s ease-in-out,
+		bottom 0.3s ease-in-out;
+	width: 100%;
+}
+
+.animate-link a:hover::after {
+	bottom: 0;
+	opacity: 1;
+	transform: scaleX(1);
+}
+
+.animate-link.white a::after {
+	background-color: #fff;
+}
+
+.background-svg {
+	opacity: 0.4;
+	background-image: url('https://bantanaoriginbucket.s3.amazonaws.com/Mask+Group+4.svg');
+	background-repeat: no-repeat;
+	height: 100%;
+	overflow: hidden;
+	position: absolute;
+	width: 100%;
+	z-index: 1;
+	top: 0;
+	left: 0;
+}
+
+.background-shimmer {
+	background: linear-gradient(
+		268deg,
+		rgba(238, 238, 238, 0) 10%,
+		rgb(177 177 177 / 68%) 40%,
+		rgba(238, 238, 238, 0) 60%
+	);
+	position: absolute;
+	z-index: 2;
+	top: 0;
+	left: 0;
+	opacity: 0.5;
+	height: 100%;
+	background-position-x: 100%;
+	width: 100%;
+	background-size: 50%;
+	overflow: hidden;
+	animation: shimmer 10s infinite linear;
+	mask-image: url(https://bantanaoriginbucket.s3.amazonaws.com/Mask+Group+4.svg);
+	mask-repeat: no-repeat;
+	mask-size: contain;
+}
+
+// .background-shimmer {
+//     background: linear-gradient(-45deg, rgba(238, 238, 238, 0) 40%, rgb(156 156 156 / 50%) 50%, rgba(238, 238, 238, 0) 60%);
+//     position: absolute;
+//     z-index: 2;
+//     height: 100%;
+//     background-position-x: 100%;
+//     width: 100%;
+//     background-size: 200%;
+//     overflow: hidden;
+//     animation: shimmer 10s infinite ease-in-out;
+//     mask-image: url(https://bantanaoriginbucket.s3.amazonaws.com/Mask+Group+4.svg);
+//     mask-repeat: no-repeat;
+//     mask-size: contain;
+// }
+
+@keyframes shimmer {
+	0% {
+		background-position-x: -100%;
+	}
+	100% {
+		background-position-x: 100%;
+	}
+}
+
+.black-button {
+	background-color: transparent;
+	font-size: 14px;
+	padding: 8px 16px;
+}
+
+.copyright {
+	font-size: 14px;
+	line-height: 1;
+	vertical-align: top;
+}
+
+.cta-black {
+	border: solid black 0.15rem;
+	color: black;
+}
+
+.cta-white {
+	border: solid white 0.15rem;
+	color: white;
+}
+
+.flex-row {
+	display: flex;
+	flex-direction: row;
+}
+
+.justify-between {
+	justify-content: space-between !important;
+}
+
+.justify-end {
+	justify-content: flex-end !important;
+}
+
+.sqs-block {
+	padding-bottom: 0 !important;
+}
+
+.sqs-layout .sqs-row .sqs-block:first-child {
+	padding-top: unset !important;
+}
+
+.vertical-divider {
+	background-color: white;
+	height: 100%;
+	margin: 0 40px;
+	width: 1px;
+}
+
+/* Home Banner Styles */
+.home-banner {
+	align-items: center;
+	display: flex;
+	height: 100vh;
+	justify-content: center;
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+}
+
+.home-banner-overlay {
+	background-color: rgba(0, 0, 0, 0.5);
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 1;
+}
+
+.home-banner-video {
+	height: auto;
+	left: 0;
+	min-height: 100%;
+	min-width: 100%;
+	position: absolute;
+	top: 0;
+	width: auto;
+}
+
+.home-shoutout {
+	text-align: center;
+	z-index: 2;
+}
+
+.home-shoutout-title {
+	color: white;
+	font-size: 80px;
+	font-weight: 500;
+}
+
+.home-shoutout-cta {
+	background: transparent;
+	font-weight: 300;
+	padding: 10px 20px;
+	text-align: center;
+	text-transform: uppercase;
+	transition-duration: 200ms;
+}
+
+.home-shoutout-cta:hover {
+	transform: scale(1.05);
+}
+
+/* Home Sections Styles */
+.lead-container {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	margin: 80px auto;
+	max-width: 1400px;
+	width: 100% !important;
+}
+
+.home-row {
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 20px;
+	position: relative;
+	z-index: 3;
+}
+
+.home-row div {
+	padding: 10px;
+	// backdrop-filter: blur(10px);
+}
+
+.home-content-column {
+	width: 50%;
+}
+
+.home-content-column p {
+	color: #4a4a4a;
+	line-height: 35px;
+	margin: unset !important;
+}
+
+.home-button-container {
+	margin-top: 20px;
+}
+
+.learn-more-btn {
+	font-size: 16px;
+	padding: 10px 20px;
+}
+
+h2.home-cta-title {
+	font-size: 50px;
+	line-height: 60px;
+	margin: 0;
+	z-index: 2;
+}
+
+h2.home-cta-title strong {
+	color: black;
+}
+
+/* Footer Styles */
+footer {
+	background-color: black;
+	color: white;
+}
+
+.footer-wrapper {
+	margin: auto;
+	max-width: 1400px;
+	padding: 80px 0;
+}
+
+.footer-row {
+	display: flex;
+	flex-direction: row;
+}
+
+.footer-logo {
+	margin-right: 40px;
+}
+
+.footer-logo img {
+	width: 220px;
+}
+
+.footer-section {
+	align-items: flex-start;
+	display: flex;
+}
+
+.footer-section ul {
+	display: flex;
+	flex-direction: column;
+	line-height: 1;
+	margin: 0;
+	padding: 0;
+	vertical-align: top;
+}
+
+.footer-menu a {
+	color: white;
+	line-height: 1;
+	margin-left: 20px;
+	text-transform: uppercase;
+	vertical-align: top;
+}
+
+.popup-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 900px !important;
+}
+
+.popup-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.popup-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.inner-popup-row {
+	align-items: center;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.inner-column:first-child {
+  flex: 1;
+}
+
+.inner-column:last-child {
+  flex: 0 0 300px; /* Adjust the width as needed */
+  margin-left: 20px; /* Adjust the margin as needed */
+}
+
+#popup-image {
+  max-width: 300px;
+  height: auto;
+}
+
+.inner-popup-text {
+  margin-top: 20px; /* Adjust the margin as needed */
+  line-height: 1.4;
+  font-size: 16px;
+}
 
 
+@media (max-width: 1420px) {
+	h2.home-cta-title {
+		font-size: 40px;
+		line-height: 1;
+	}
+}
 
-<a id="bio-link"></a>
-<div id="data-source" style="display: none">
-    <div id="long-bio">
-        <p class="" id="yui_3_17_2_1_1714590605910_161">Diane recently served as Chief Commercial Officer for Better
-            Therapeutics, where she focused on the company’s commercial capabilities and led the launch of AspyreRx, an
-            FDA-authorized prescription digital therapeutic delivering cognitive behavioral therapy for the treatment of
-            Type II Diabetes. </p>
-        <p class="">Prior to Better Therapeutics, was the U.S. President of Galderma responsible for integrating its
-            aesthetic, consumer care and prescription medicines business units following its divestiture from Nestlé.
-        </p>
-        <p class="">From 2003 to 2021, Diane spent nearly two decades at Johnson &amp; Johnson in strategic and
-            commercial roles in its medtech sector ultimately serving as the Worldwide President of Mentor, a women’s
-            surgical breast aesthetics business. </p>
-        <p class="">Diane began at J&amp;J as a member of the Cordis team who launched Cypher, the first drug eluting
-            stent. At Ethicon, Diane led the Biosurgery franchise and commercialized the Evarrest fibrin sealant patch
-            for rapid hemostasis of problematic bleeding in surgery. </p>
-        <p class="">Diane serves as an Executive Strategic Advisor to InSoma Biotech, an early-stage start-up developing
-            novel injectable material to mimic human tissue. She serves on the Board of Directors for Workforce
-            Solutions Dallas, appointed by Dallas Mayor Eric Johnson. Diane also sits on the Board of the Association of
-            Latino Princeton Alumni.</p>
-    </div>
-    <span id="profile-name">DIANE GOMEZ-THINNES</span>
-    <div id="profile-mini">
-        <div class="image-subtitle-wrapper">
-            <div class="image-subtitle sqs-dynamic-text">
-                <p class="">Chief Commerical Officer, Better Therapeutics </p>
-                <p class="">U.S. President, Galderma </p>
-                <p class="">WW President, Mentor (J&J) </p>
-                <p class="">Strategic Marketing, Cordis & Ethicon (J&J)</p>
-            </div>
-        </div>
-    </div>
-</div>
+@media (max-width: 1200px) {
+	.background-svg {
+		display: none;
+	}
 
+	.background-shimmer {
+		display: none;
+	}
 
-<a id="bio-link"></a>
-<div id="data-source" style="display: none">
-    <div id="long-bio">
-        <div class="sqs-block-content">
-            <p class="">Glen is currently the CEO of Highridge Medical, previously,
-                the spine division of ZimVie. </p>
-            <p class="">Prior to Highridge Medical, Glen was the CEO of Cerapedics
-                Inc., a privately held Ortho-biologics company focused on developing and commercializing
-                peptide-enhanced bone graft products. </p>
-            <p class="">Glen has also served as Worldwide President for Spine &amp;
-                Bone Healing Technologies, Inc., a division of Biomet Inc. Additionally, Glen concurrently served as
-                Senior Vice President on Biomet’s Worldwide Operating Board, encompassing the Orthopedics, Spine,
-                Trauma, Biologics, and Sports Medicine businesses. Previously, he has held a number of Divisional
-                president roles at Johnson &amp; Johnson where he served as Worldwide President for Cordis
-                Endovascular and Neurovascular and as Worldwide President for Codman Neuro Sciences and U.S.
-                President of DePuy Spine. </p>
-            <p class="">In addition to his corporate roles, Glen has concurrently
-                managed a contract manufacturing business, Ortho-Craft that was acquired by Paragon Medical in 2005.
-                He has also served several board of director positions including SpineView, Palyon Medical, Veniti
-        </div>
-    </div>
-    <span id="profile-name">Glen Kashuba</span>
-    <div id="profile-mini">
-        <div class="image-subtitle-wrapper">
-            <div class="image-subtitle sqs-dynamic-text">
-                <p class="">CEO, Highridge Medical </p>
-                <p class="">CEO, Cerapedics </p>
-                <p class="">WW President, Spine and Bone, Biomet </p>
-                <p class="">WW President for Cordis Endovascular and Neurovascular (J&amp;J) </p>
-                <p class="" id="yui_3_17_2_1_1714590763257_146">WW President for Codman Neuro (J&amp;J) U.S. President
-                    of DePuy Spine (J&amp;J)</p>
-            </div>
-        </div>
-    </div>
-</div>
+	h2.home-cta-title {
+		font-size: 36px;
+		line-height: 45px;
+		margin-bottom: 20px;
+	}
 
+	.lead-container {
+		margin: unset !important;
+		width: 100%;
+	}
 
-<a id="bio-link"></a>
-<div id="data-source" style="display: none">
-    <div id="long-bio">
-        <div class="sqs-block-content">
+	.home-content-column {
+		width: 100%;
+	}
 
-            <p class="">Glenn Mattes has more than 30 years of healthcare enterprise leadership and executive
-                experience. He has served in executive capacities in large pharmaceutical companies, biotech and device
-                focused companies in both public and private domains. </p>
-            <p class="">Most recently, Glenn was CEO at TFF, Inc., a pharmaceutical company developing a novel
-                inhalation therapy technology platform with an IPO in 2023. Glenn has been involved at a number of
-                development stage companies as CEO and Board level. </p>
-            <p class="">Glenn’s specific company experience includes Johnson &amp; Johnson, Rhône Poulenc Rorer,
-                ConvaTec, Candel, Centocor, TFF, Arno Therapeutics, Translational Sciences, The Gores Group, and the
-                Clayton Foundation for Research. </p>
-            <p class="">Glenn was appointed to the President’s Advisory Committee on HIV/AIDS by President George W.
-                Bush and the U.S. Secretary of Health and Human Services.</p>
+	.home-content-column p {
+		line-height: 28px;
+	}
 
-        </div>
-    </div>
-    <span id="profile-name">Glen Mattes</span>
-    <div id="profile-mini">
-        <div class="image-subtitle-wrapper">
-            <div class="image-subtitle sqs-dynamic-text">
-                <p class="">CEO, kaleo (Acquired) </p>
-                <p class="">Director, Avenu Meidcal (Acquired) </p>
-                <p class="">Vice President, Cardiac Rhythm Management, Boston Scientific</p>
-            </div>
-        </div>
-    </div>
-</div>
+	.home-row {
+		flex-direction: column;
+	}
+}
 
+@media (min-width: 1080px) and (max-width: 1200px) {
+	.home-wrapper {
+		padding-top: 40px;
+	}
 
-<a id="bio-link"></a>
-<div id="data-source" style="display: none">
-    <div id="long-bio">
-        <div class="sqs-block-content">
-            <p class="">Kevin has served as a member of the Board of Directors of Silk Road Medical, a publicly traded
-                company focused on reducing the risk of stroke, since December 2020. </p>
-            <p class="">From July 2020 to September 2023, Kevin served as President of Aldevron, a privately held
-                genomics company that was acquired by Danaher Corporation in August 2021. </p>
-            <p class="">Prior to joining Aldevron, Kevin spent 25 years at Boston Scientific Corporation. During his
-                last nine years at Boston Scientific, Kevin served as Executive Vice President and Global President of
-                the Interventional Cardiology division. Kevin has served on the board of directors of Shockwave Medical,
-                Inc., since June 2023.</p>
-        </div>
-    </div>
-    <span id="profile-name">KEVIN BALLINGER</span>
-    <div id="profile-mini">
-        <div class="image-subtitle-wrapper">
-            <div class="image-subtitle sqs-dynamic-text">
-                <p class="">Director, Silk Road Medical (NASDAQ: SILK) </p>
-                <p class="">Director, Shockwave Medical (NASDAQ: SWAV) </p>
-                <p class="">President, Aldevron (Acquired) </p>
-                <p class="">Executive VP and Global President, Boston Scientific (Interventional Cardiology)</p>
-            </div>
-        </div>
-    </div>
-</div>
+	// .col.sqs-col-3.span-3 {
+	//   width: calc(90vw / 3) !important;
+	// }
 
+	.footer-row {
+		display: column !important;
+		margin-bottom: 20px !important;
+	}
 
-<a id="bio-link"></a>
-<div id="data-source" style="display: none">
-    <div id="long-bio">
-        <div class="sqs-block-content">
+	.footer-row.justify-between {
+		display: flex;
+		flex-direction: column !important;
+		margin: auto;
+		align-items: center;
+	}
 
-            <p class="">Martin spent over 30 years at McKinsey &amp; Company where he led the global life sciences
-                practice for 7 years ( 2014-2021) and co-founded/ co-led the McKinsey health institute (a non-profit
-                generating initiative focused on extending healthspan). </p>
-            <p class="">Martin served clients across medical devices, biopharma and consumer health in North America,
-                Europe, Asia and Middle East and South Africa. Earlier in his McKinsey career, he led the cross-industry
-                organization practice in EMEA. </p>
-            <p class="">In addition to his board role at Distalmotion, Martin is also chair of the advisory board at
-                Medgenome.</p>
+	.footer-left.flex-row {
+		margin-bottom: 20px;
+	}
 
-        </div>
-    </div>
-    <span id="profile-name">MARTIN DEWHURST</span>
-    <div id="profile-mini">
-        <div class="image-subtitle-wrapper">
-            <div class="image-subtitle sqs-dynamic-text">
-                <p class="">Director, Distalmotion </p>
-                <p class="">Partner / Global Lead Healthcare &. Life Sciences, McKinsey & Company</p>
-            </div>
-        </div>
-    </div>
-</div>
+	.footer-row.justify-end {
+		justify-content: center !important;
+	}
+}
 
+@media (min-width: 840px) and (max-width: 1200px) {
+	.sqs-row {
+		padding-right: 40px !important;
+		padding-left: 40px !important;
+	}
+}
 
-<a id="bio-link"></a>
-<div id="data-source" style="display: none">
-    <div id="long-bio">
-        <div class="sqs-block-content">
+@media (max-width: 1080px) {
+	.cta-black {
+		width: 100%;
+	}
 
-            <p class="">Nadav brings 23 years of global, multi-segment general management
-                experience in Medtech. </p>
-            <p class="">Nadav is the CEO of Cynosure an energy based aesthetics device
-                maker and lead the acquisition and merger with Lutronic announced in January, 2024. </p>
-            <p class="">Prior to Cynosure Nadav was with Johnson &amp; Johnson for 22
-                years where he last served as Global President, Spine for DePuy Synthes Companies. Additional roles at
-                J&amp;J include Vice President, for in the Diabetes Care franchise, including commercial activity for
-                LifeScan and Animas subsidiaries as well as Vice President, Sales &amp; Marketing, for the
-                cardiovascular franchise including Cordis &amp; Biosense Webster. </p>
-            <p class="">Nadav serves as a director for a Revival portfolio company,
-                Augmedics, and leads Revival’s Israeli relations and strategy.</p>
+	.lead-container {
+		margin: unset !important;
+		padding: 0;
+	}
 
+	.home-row {
+		margin-top: 0;
+		width: 100%;
+	}
 
-        </div>
-    </div>
-    <span id="profile-name">Nadav Tomer</span>
-    <div id="profile-mini">
-        <div class="image-subtitle-wrapper">
-            <div class="image-subtitle sqs-dynamic-text">
-                <p class="">CEO, Cynosure (Acquired) </p>
-                <p class="">Global President, Depuy Synthes (J&J) </p>
-                <p class="">Vice President, J&J (Diabetes Franchise, Cordis & Biosense Webster) </p>
-            </div>
-        </div>
-    </div>
-</div>
+	.footer-left {
+		align-items: center;
+		flex-direction: column;
+		gap: 20px;
+	}
 
+	.footer-logo {
+		margin: 0;
+		width: 180px;
+	}
 
-<a id="bio-link"></a>
-<div id="data-source" style="display: none">
-    <div id="long-bio">
-        <div class="sqs-block-content">
-            <p class="">Regina Benjamin, MD, MBA is the Founder and CEO of Bayou Clinic,
-                and was the 18th United States Surgeon General (2009-2013). </p>
-            <p class="">As U.S. Surgeon General, Dr. Benjamin oversaw the operational
-                command of 6,500 uniformed public health officers who serve in locations around the world to promote and
-                protect the health of the American People. As chair of the National Prevention Council – 17
-                cabinet-level Federal Agency Heads, she led the development of the National Prevention Strategy:
-                America’s Plan for Better Health and Wellness. </p>
-            <p class="">In 1995, she was the first physician under the age of 40 and the
-                first African-American woman to be elected to the American Medical Association Board of Trustees. Other
-                past board memberships included the Robert Wood Johnson Foundation, Kaiser Family Foundation Commission
-                on Medicaid and the Uninsured, Catholic Health Association, and Morehouse School of Medicine. </p>
-            <p class="">She currently serves on the boards of Kaiser Hospitals and Health
-                Plan; Ascension Health Alliance; ConvaTec PLC; Computer Technology Systems Inc (CPSI); and the American
-                Heart Association. </p>
-            <p class="">Dr. Benjamin is a member of the Institute of Medicine and a Fellow
-                of the American Academy of Family Physicians. </p>
-            <p class="">In 1998 Dr. Benjamin was the United States recipient of the Nelson
-                Mandela Award for Health and Human Rights. She received the 2000 National Caring Award, which was
-                inspired by Mother Teresa and was recognized with the Papal honor Pro Ecclesia et Ponticifice from Pope
-                Benedict XVI. In 2008, she was honored with a MacArthur Genius Award Fellowship. In 2011, Dr. Benjamin
-                became the recipient of the Chairman’s Award at the 42nd NAACP Image Awards. In May 2013, Reader’s
-                Digest, ranked her #22 of the “100 Most Trusted People in America”.</p>
-        </div>
-    </div>
-    <span id="profile-name">Regina Benjamin, MD</span>
-    <div id="profile-mini">
-        <<div class="image-subtitle sqs-dynamic-text" data-width-percentage="44" style="font-size: max(0.75rem, 44%);"
-            id="yui_3_17_2_1_1714591257638_147">
-            <p class="" id="yui_3_17_2_1_1714591257638_146">18th United States Surgeon
-                General (2009-2013) Director</p>
-            <p class="">Kaiser Hospitals and Health Plan Director</p>
-            <p class="">Ascension Health Alliance Director</p>
-            <p class="">ConvaTec PLC Director, American Heart Association Founder and CEO
-                of BayouClinic</p>
-    </div>
-</div>
-</div>
-</div>
+	.footer-menu a {
+		font-size: 14px;
+	}
 
+	.footer-row {
+		align-items: center;
+		flex-direction: column;
+		gap: 20px;
+	}
 
-<a id="bio-link"></a>
-<div id="data-source" style="display: none">
-    <div id="long-bio">
-        <div class="sqs-block-content">
+	.footer-section {
+		justify-content: center !important;
+		width: 100%;
+	}
 
+	.footer-section ul {
+		align-items: center;
+		color: #bfbfbf;
+		font-size: 14px;
+		line-height: 18px;
+		text-align: center;
+		width: 50%;
+	}
 
-            <p class="">Sholmi has over 25 years of experience in the medical device
-                industry and is currently serving as board member on multiple companies in the medical device industry
-                as well as a board member at the Arnold and Mable Beckman Foundation, a foundation focused on supporting
-                research in chemistry and life sciences.</p>
-            <p class="">Previously, Shlomi held senior operating roles at Johnson &amp;
-                Johnson, where he was the Company Group Chairman of Cardiovascular and Specialty Solutions and Visions
-                Group within the Medical Devices sector. He was a member of the Medical Devices Group Operating
-                Committee and lead a diverse portfolio of 6 diverse medical device businesses including
-                Electrophysiology, Neurovascular Intervention, Ear, Nose &amp; Throat, Breast Aesthetics, Optometry and
-                Ophthalmology. Prior to that, Nachman had various roles with increase scope and responsibilities
-                including Worldwide President of Biosense Webster and Cordis.</p>
+	.footer-wrapper {
+		padding: 80px 20px;
+	}
 
-        </div>
-    </div>
-    <span id="profile-name">SHLOMI NACHMAN</span>
-    <div id="profile-mini">
-        <div class="image-subtitle-wrapper">
-            <div class="image-subtitle sqs-dynamic-text">
-                <p class=""><em>Company Group Chairman of Cardiovascular and Specialty
-                        Solutions (J&amp;J) </em></p>
-                <p class=""><em>Company Group Chairman of Visions Group (J&amp;J) </em>
-                </p>
-                <p class=""><em>Worldwide President of Biosense Webster and Cordis
-                        (J&amp;J)</em></p>
-            </div>
-        </div>
-    </div>
-</div>
+	span.copyright {
+		font-size: 10px;
+	}
+	.bio-linker {
+		position: unset !important;
+	}
+}
 
+@media (max-width: 768px) {
+	h1.home-shoutout-title {
+		font-size: 40px;
+	}
 
-<a id="bio-link"></a>
-<div id="data-source" style="display: none">
-    <div id="long-bio">
-        <div class="sqs-block-content">
+	h2.home-cta-title {
+		font-size: 28px;
+		line-height: 35px;
+	}
 
+	.black-button,
+	.learn-more-btn {
+		font-size: 14px;
+	}
 
-            <p class="">Yann co-founded and lead Cardiologs as the CEO from its formation in 2014 until 2021 when it was
-                acquired by Phillips. Yann remained with Phillips as the General Manager until December 2022. </p>
-            <p class="">Cardiologs was a France-based SaSS cardiovascular diagnostics SaSS company that utilized
-                artificial intelligence (AI), deep learning and cloud technology at a global scale to aid in the
-                analysis of electrocardiograms (ECG’s) and obtained regulatory clearances – both CE Mark in 2016 from
-                the FDA in 2017.</p>
+	.home-button-container {
+		text-align: center;
+		width: 100%;
+	}
+	
+	.inner-popup-row {
+		flex-direction: column !important;
+	}
+	.inner-column:last-child {
+		margin: 0px !important;
+		flex: unset !important;
+	}
+	#popup-image {
+		max-width: unset !important;
+		width: 100%;
+	}
+	
+	.inner-column:first-child {
+		width: 100%;
+	}
+	
+	.image-subtitle.sqs-dynamic-text {
+    margin-bottom: 10px;
+	}
+	.fancybox__content {
+		padding: 20px !important;
+	}
+	.profile-name {
+		font-size: 28px !important;
+	}
+}
 
-        </div>
-    </div>
-    <span id="profile-name">YANN FLEUREAU</span>
-    <div id="profile-mini">
-        <div class="image-subtitle-wrapper">
-            <div class="image-subtitle sqs-dynamic-text">
-                <p class="">Co-Founder and CEO, Cardiologs </p>
-                <p class="">General Manager, Phillips</p>
-            </div>
-        </div>
-    </div>
-</div>
+span.bio-text p {
+	margin: 0;
+	text-align: left;
+	font-size: 14px;
+	line-height: 1.4;
+}
 
+@media (min-width: 840px) {
+	#page {
+		max-width: 1200px !important;
+		padding-left: 0px;
+		padding-right: 0px;
+		padding-top: 40px;
+	}
 
+	span.bio-text {
+		padding: 10px;
+	}
 
-<a id="bio-link"></a>
-<div id="data-source" style="display: none">
-    <div id="long-bio">
-        <div class="sqs-block-content">
+	span.bio-text p {
+		padding-left: 10px;
+	}
 
+	.bio-popup {
+		position: absolute;
+		z-index: 10;
+		top: 100%;
+		cursor: pointer;
+		left: 50%;
+		transform: translateX(-50%);
+		opacity: 0;
+		visibility: hidden;
+		transition:
+			opacity 0.3s ease-in-out,
+			transform 0.3s ease-in-out;
+		background-color: #fff;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+		text-align: left;
+		width: 100%;
+		// width: 300px; /* Adjust the width as needed */
+	}
 
-            <p class="">Tiffanie has spent the last 13 years as the Managing Principal of her own consulting company
-                where she leverages her broad experiences to assist multinational, early-stage startups, and large
-                Fortune 500 companies plan and execute strategies for clinical research and evidence generation, as well
-                as for regulatory, product development, commercial, and market access &amp; reimbursement. </p>
-            <p class="">Additionally, Tiffanie serves as a facilitator, coach, and judge for the Value Workshop program
-                for MedTech Innovator Accelerator and Venture, a nonprofit, global competition and accelerator for
-                medical device, digital health, and diagnostic companies. </p>
-            <p class="">Previously, Tiffanie was the Vice President of Clinical &amp; Medical Affairs at Apollo
-                Endosurgery, where as a part of the executive team, she lead all Global Clinical and Medical Affairs
-                activities, including regulated studies and strategic planning of all global reimbursement processes
-                with a focus on securing FDA approval for key products. </p>
-            <p class="">Earlier roles for Tiffanie included, Director of Global Market Development with Covidien,
-                Marketing Manager with Stryker Corporation, as well as Senior Product Manager and Product Manager with
-                Stryker Corporation.</p>
+	.image-block-wrapper {
+		cursor: pointer;
+	}
 
-        </div>
-    </div>
-    <span id="profile-name">TIFFANIE GILBRETH</span>
-    <div id="profile-mini">
-        <div class="image-subtitle-wrapper">
-            <div class="image-subtitle sqs-dynamic-text">
-                <p class="">Vice President of Clinical & Medical Affairs at Apollo Endosurgery </p>
-                <p class="">Director Market Development, Covidien</p>
-            </div>
-        </div>
-    </div>
-</div>
+	.col.sqs-col-3.span-3 {
+		position: relative !important;
+	}
 
+	.col.sqs-col-3.span-3:hover {
+		background-color: #f7f7f7;
+		transition-duration: 200ms;
+		box-shadow:
+			0px 0px 20px rgb(0 0 0 / 6%),
+			0 6px 6px rgb(0 0 0 / 5%);
+	}
 
-<a id="bio-link"></a>
-<div id="data-source" style="display: none">
-    <div id="long-bio">
-        <div class="sqs-block-content">
+	.col.sqs-col-3.span-3:hover .bio-popup {
+		opacity: 1;
+		visibility: visible;
+		transform: translate(-50%, 0%);
+	}
 
+	.col.sqs-col-3.span-3:hover .bio-linker {
+		opacity: 1;
+		transform: translateY(0);
+	}
 
+	.leader-focus {
+		transition-duration: 1200ms;
+		animation-duration: 500ms;
+		filter: grayscale(0.99) blur(1px);
+		opacity: 0.9;
+	}
 
-            <p class="">Victor (Vic) Chance is the President of BVC Consulting which provides consulting services in
-                productivity improvement, operations excellence, supply chain strategies, strategic procurement and
-                execution support for the supply chain and procurement functions. </p>
-            <p class="">Previously Vic served as Vice President, External Operations and Supply Chain Chief Procurement
-                Officer for the Medical Device &amp; Diagnostics Sector of Johnson &amp; Johnson. In those roles, Vic
-                was responsible for the external supplier network along with all associated external supply performance
-                improvement. </p>
-            <p class="">In addition, Vic was also World-wide Vice President of Operations at Cordis and Ortho-Clinical
-                Diagnostics – both Johnson and Johnson subsidiaries at the time. While Vic was at Cordis, they received
-                recognition for operations excellence by receiving the Shingo Prize for Manufacturing as well as being a
-                two-time winner of Industry Week’s “America’s Best Plants” award (Juarez, MX and San German, PR).</p>
+	.col.sqs-col-3.span-3 {
+		transition-duration: 2200ms;
+		animation-duration: 800ms;
+		cursor: cursor;
+	}
 
-        </div>
-    </div>
-    <span id="profile-name">VICTOR CHANCE</span>
-    <div id="profile-mini">
-        <div class="image-subtitle-wrapper">
-            <div class="image-subtitle sqs-dynamic-text">
-                <p class="">Operations Advisor, Distalmotion</p>
-                <p class="">CPO, J&J Medical Devices and Diagnostics</p>
-                <p class="">VP, External Operattions J&J </p>
-                <p class="">WW VP, Operations, Cordis and Ortho-Clinical Diagnostics (J&J)</p>
-            </div>
-        </div>
-    </div>
-</div>
+	.bio-linker {
+		transition-duration: 200ms;
+		transform: translateY(-20);
+		opacity: 0;
+		font-size: 14px;
+		font-weight: 600;
+		line-height: 1.25em;
+		position: absolute;
+		right: 10px;
+		top: 0;
+	}
 
+	.bio-linker a {
+		color: #2f2f2f !important;
+	}
 
-<a id="bio-link"></a>
-<div id="data-source" style="display: none">
-    <div id="long-bio">
-        <div class="sqs-block-content">
+	.image-caption-wrapper p {
+		font-size: 0.875em;
+		line-height: 1.25em;
+		margin-top: 0px;
+		margin-bottom: 5px;
+	}
+}
 
+@media (max-width: 840px) {
+	.sqs-block {
+		z-index: 2;
+	}
+	.image-block-wrapper {
+		width: 85%;
+		margin: auto;
+		background-color: #f7f7f7;
+	}
+	.sqs-block.code-block.sqs-block-code {
+		padding-top: 0px;
+		margin-top: -10px;
+	}
+	.col.sqs-col-3.span-3:hover .bio-popup {
+		display: visible !important;
+		opacity: 1;
+		position: relative;
+	}
+	.col.sqs-col-3.span-3 {
+		width: 100% !important;
+	}
+	div#yui_3_17_2_1_1714010315665_72 {
+		display: grid !important;
+		grid-template-columns: 1fr 1fr !important;
+	}
+	.col.sqs-col-3.span-3 {
+		padding-top: 20px;
+		padding-bottom: 20px !important;
+		border-bottom: solid 2px #f7f7f7;
+	}
+	.image-caption p {
+		text-align: center !important;
+	}
+	span.bio-text p {
+		text-align: center !important;
+	}
+	.bio-linker {
+		display: none;
+	}
+}
 
+.grid-lines {
+	height: 100vh;
+	position: absolute; /* Absolutely positions the container */
+	top: 0; /* Aligns the top of the container with the top of the nearest positioned ancestor */
+	left: 0; /* Aligns the left of the container with the left of the nearest positioned ancestor */
+	right: 0; /* Aligns the right of the container with the right of the nearest positioned ancestor */
+	bottom: 0; /* Aligns the bottom of the container with the bottom of the nearest positioned ancestor */
+	display: flex; /* Uses flexbox to align children elements */
+	justify-content: space-between; /* Distributes the lines with equal space in between */
+}
 
-            <p class="">Spencer was CEO and board member of Kaleo, Inc from 2016 to 2021. While at Kaleo, Spencer led
-                the growth of the company from a three-person start-up to a business with five FDA approved drug-device
-                combination products. In 2021 Kaleo was acquired by Marathon Asset Management for $310M, including
-                milestones. </p>
-            <p class="">Spencer has also on the board of Avenu Medical which developed a percutaneous AV fistula
-                catheter product for chronic kidney disease patients. Avenu was acquired in 2020 by Medtronic. </p>
-            <p class="">Before Spencer’s private company experience, he held senior executive level positions with
-                Guidant / Boston Scientific in the Cardiac Rhythm Management division.</p>
+.line {
+	display: none;
+	width: 2px; /* Sets the width of each line */
+	// background: red;
+	z-index: 0;
+	background: linear-gradient(to bottom, #ededed, transparent);
+	height: 100%; /* Full height to stretch from top to bottom of the container */
+}
 
-        </div>
-    </div>
-    <span id="profile-name">SPENCER WILLIAMSON</span>
-    <div id="profile-mini">
-        <div class="image-subtitle-wrapper">
-            <div class="image-subtitle sqs-dynamic-text">
-                <p class="">CEO, kaleo (Acquired) </p>
-                <p class="">Director, Avenu Meidcal (Acquired) </p>
-                <p class="">Vice President, Cardiac Rhythm Management, Boston Scientific</p>
-            </div>
-        </div>
-    </div>
-</div>
+// .sqs-block {
+// 	padding-top: 0px;
+// }
 
+.image-caption {
+	position: relative !important;
+}
 
-<a id="bio-link"></a>
-<div id="data-source" style="display: none">
-    <div id="long-bio">
-        <div class="sqs-block-content">
+// .sqs-block {
+// 	position: unset !important;
+// }
 
+.bleed-banner {
+	position: fixed;
+	left: 0;
+	top: 0;
+	margin-top: 100px;
+}
 
+//
+//
+//
 
-            <p class="">As the the Chief Growth Officer at Commure, Manisha was
-                responsible for sales, marketing, customer success, operations, and partnerships organizations. </p>
-            <p class="">Before joining Commure, Manisha held leadership positions in the
-                intersection of healthcare and technology serving as the Chief Operating Officer at Clarify Health
-                Solutions, a technology company focused on analytical software solutions for payers, providers, and life
-                sciences customers. </p>
-            <p class="">Prior to Manisha’s operating roles, she was a Partner at McKinsey
-                &amp; Company in the medical products, life sciences, and health systems/payor practices in the US, UK,
-                and emerging markets. Her focus at McKinsey for over a decade was commercial growth and innovation with
-                impact, including the use of technology and data to drive outcomes at improved cost for the health
-                ecosystem. </p>
-            <p class="">Prior to McKinsey Manisha worked in global health and healthcare
-                investing at Acumen, the UNDP in Ethiopia, and the American India Foundation. </p>
-            <p class="">Manisha currently serves as a member of the Board of Directors for
-                Model N, a public company that focuses on revenue lifecycle management software for life sciences
-                companies, and as Chair of the Board of Directors at ReSurge International, a nonprofit humanitarian aid
-                organization providing reconstructive surgical care in low-income countries worldwide.</p>
+.fancybox-content {
+	max-width: 900px;
+}
 
+.popup-column.popup-column {
+	// align-items: start;
+	flex-direction: column;
+	justify-content: start;
+}
+.popup-row.popup-row {
+	flex-direction: column;
+}
+.popup-mini-bio {
+	width: 100%;
+	// margin: 25px 0;
+	border-bottom: solid 2px black;
+	display: flex;
+	align-items: start;
+	flex-direction: column;
+	// justify-content: start;
+}
+.profile-name {
+	font-size: 40px;
+	font-weight: 700;
+	margin: 0;
+	margin-bottom: 8px;
+	color: rgb(0 0 0);
+	letter-spacing: 2px;
+	opacity: 0.8;
+}
+.popup-mini-bio h3 {
+	margin: 0px;
+	margin-bottom: 10px;
+}
 
-        </div>
-    </div>
-    <span id="profile-name">MANISHA SHETTY GULATI</span>
-    <div id="profile-mini">
-        <div class="image-subtitle-wrapper">
-            <div class="image-subtitle sqs-dynamic-text">
-                <p class=""><strong>Strategic Advisor, Distalmotion</strong></p>
-                <p class="">Chief Growth Officer at Commure </p>
-                <p class="">Chief Operating Officer at Clarify Health Solutions </p>
-                <p class="">Partner at McKinsey &amp; Company Director, Model N </p>
-                <p class="">Director, ReSurge International</p>
-            </div>
-        </div>
-    </div>
-</div>
+.popup-mini-bio p {
+    margin: 4px;
+    font-size: 14px;
+    color: #9b9b9b;
+}
+
+.fancybox-content .fancybox-close-small {
+	display: none;
+}
+
+@media only screen and (min-width: 992px) {
+	.inner-popup-text {
+		background-color: whitesmoke;
+		padding: 16px;
+		margin-top: 10px;
+		font-size: 16px;
+	}
+	.popup-row.popup-row {
+		flex-direction: row;
+	}
+	.popup-column #popup-image {
+		max-width: 300px;
+	}
+	.popup-column.popup-column {
+		align-items: start;
+		margin: 12px;
+	}
+
+	.popup-mini-bio {
+		flex-direction: column;
+		align-items: start;
+		border: none;
+		margin-bottom: 0;
+	}
+}
+@media only screen and (min-width: 1200px) {
+	.popup-column #popup-image {
+		max-width: 300px;
+	}
+}
+</style>
