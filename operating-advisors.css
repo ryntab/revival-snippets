@@ -37,6 +37,10 @@ header#header {
 	top: 0 !important;
 }
 
+.sqs-layout .sqs-row .sqs-block:first-child {
+    padding-top: unset !important;
+}
+
 .background-svg {
 	opacity: 0.4;
 	background-image: url('https://bantanaoriginbucket.s3.amazonaws.com/Mask+Group+4.svg');
@@ -389,6 +393,10 @@ span.bio-text p {
 		padding-right: 0px;
 		padding-top: 40px;
 	}
+
+	.home-wrapper {
+        margin-top: 40px !important;
+    }
 
 	span.bio-text {
 		padding: 10px;

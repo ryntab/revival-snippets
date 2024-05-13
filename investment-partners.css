@@ -410,6 +410,10 @@ span.bio-text p {
 		padding-top: 40px;
 	}
 
+	.home-wrapper {
+		margin-top: 40px !important;
+	}
+
 	span.bio-text {
 		padding: 10px;
 	}

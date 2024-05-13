@@ -205,6 +205,10 @@ button.button.sqs-system-button.sqs-editable-button.form-submit-button.sqs-butto
     color: black;
   }
 
+  .sqs-image-shape-container-element {
+    height: 100px;
+}
+
 }
 
 @media (min-width: 840px) and (max-width: 1200px) {
@@ -229,8 +233,8 @@ button.button.sqs-system-button.sqs-editable-button.form-submit-button.sqs-butto
 		font-size: 28px !important;
 	}
 	
-	.row.sqs-row {
-    text-align: center !important;
+	/* .row.sqs-row {
+    text-align: center !important; */
 }
 	
   #block-yui_3_17_2_1_1714505845123_2511,
@@ -251,11 +255,11 @@ button.button.sqs-system-button.sqs-editable-button.form-submit-button.sqs-butto
     overflow: hidden;
   } */
   
-  .col.sqs-col-12.span-12 > :nth-child(2) { 
+  /* .col.sqs-col-12.span-12 > :nth-child(2) { 
   	    margin-left: 6% !important;
     margin-right: 6% !important;
         margin-top: 0px !important;
-  }
+  } */
   
   .row.sqs-row:last-child {
   	background-color: #f1f1f1;
