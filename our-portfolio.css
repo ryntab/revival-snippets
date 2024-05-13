@@ -1,9 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
-* {
-	font-family: "Montserrat", sans-serif !important;
-	font-style: normal;
-}
-
 a {
 	color: white !important;
 	font-weight: 600;
@@ -18,10 +12,8 @@ a {
 	max-width: 1200px !important;
 }
 
-h1, .entry-title {
-}
-
-p {
+#siteWrapper {
+	background: #000 !important;
 }
 
 .col.sqs-col-12.span-12 > :nth-child(1) ~ * {
@@ -34,28 +26,9 @@ p {
 	margin-top: 40px;
 }
 
-.header-inner {
-	max-width: 1400px !important;
-}
-
 header#header {
 	background-color: black !important;
 	top: 0 !important;
-}
-
-#mainNavigation > :nth-child(4) {
-	display: none;
-}
-
-#footer {
-	display: none;
-}
-
-nav#mainNavigation .external a {
-	border: solid 1px white;
-	margin: 0;
-	padding-left: 16px;
-	padding-right: 16px;
 }
 
 .align-left {
@@ -157,10 +130,6 @@ nav#mainNavigation .external a {
 	z-index: 0;
 	bottom: 0;
 	left: 0;
-}
-
-#siteWrapper {
-	background: #000 !important;
 }
 
 h1, h3, h3 {
