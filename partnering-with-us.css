@@ -17,6 +17,16 @@ a {
  strong {
    color: white;
   }
+  
+  .chevron.flipped-chevron {
+  transform: rotate(0deg);
+  transition: transform 0.3s ease-in-out;
+}
+
+.chevron {
+	 transition: transform 0.3s ease-in-out;
+	 transform: rotate(180deg);
+}
 
 #page {
   width: 100%;
