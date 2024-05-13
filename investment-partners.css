@@ -27,28 +27,12 @@
 .fancybox__container::-webkit-scrollbar-thumb {
   background-color: transparent;
 }
-.animate-link a::after {
-  background-color: #000;
-  bottom: -3px;
-  content: "";
-  height: 2px;
-  left: 0;
-  opacity: 0;
-  position: absolute;
-  transition: opacity 0.1s ease-in-out, bottom 0.3s ease-in-out;
-  width: 100%;
-}
 
-.animate-link a:hover::after {
-  bottom: 0;
-  opacity: 1;
-  transform: scaleX(1);
-}
 .fancybox__container:hover::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-// #page {
+/* // #page {
 //   max-width: 100% !important;
 //   overflow: hidden;
 //   padding: unset !important;
@@ -57,7 +41,7 @@
 // .row.sqs-row {
 // 	max-width: 1400px;
 // 	margin: auto;
-// }
+// } */
 
 
 .background-svg {
@@ -96,7 +80,7 @@
 	mask-size: contain;
 }
 
-// .background-shimmer {
+/* // .background-shimmer {
 //     background: linear-gradient(-45deg, rgba(238, 238, 238, 0) 40%, rgb(156 156 156 / 50%) 50%, rgba(238, 238, 238, 0) 60%);
 //     position: absolute;
 //     z-index: 2;
@@ -109,7 +93,7 @@
 //     mask-image: url(https://bantanaoriginbucket.s3.amazonaws.com/Mask+Group+4.svg);
 //     mask-repeat: no-repeat;
 //     mask-size: contain;
-// }
+// } */
 
 @keyframes shimmer {
 	0% {
@@ -118,19 +102,6 @@
 	100% {
 		background-position-x: 100%;
 	}
-}
-
-.flex-row {
-	display: flex;
-	flex-direction: row;
-}
-
-.justify-between {
-	justify-content: space-between !important;
-}
-
-.justify-end {
-	justify-content: flex-end !important;
 }
 
 .sqs-block {
