@@ -212,16 +212,16 @@ input, textarea {
     overflow: hidden;
   } */
 
-  .col.sqs-col-12.span-12 > :nth-child(1) img {
+  /* .col.sqs-col-12.span-12 > :nth-child(1) img {
     height: 100%;
     width: auto;
     object-fit: cover;
-  }
+  } */
 
   .col.sqs-col-12.span-12 > :nth-child(2) {
     position: relative;
     z-index: 2;
-    margin-top: -40px !important;
+    margin-top: 0px !important;
     margin-left: 6% !important;
     margin-right: 6% !important;
     background: black;

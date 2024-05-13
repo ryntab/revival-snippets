@@ -269,12 +269,12 @@ button.button.sqs-system-button.sqs-editable-button.form-submit-button.sqs-butto
   	display: none;
   }
 
-  .col.sqs-col-12.span-12 > :nth-child(1) img {
+  /* .col.sqs-col-12.span-12 > :nth-child(1) img {
     height: 100%;
     width: auto;
     object-fit: cover;
   }
-  
+   */
   .sqs-block-html .sqs-block-content,
   .sqs-block-html .sqs-html-content {
     padding-bottom: 20px;
