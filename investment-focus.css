@@ -203,14 +203,14 @@ input, textarea {
     padding-top: 0px !important;
   }
 
-  .col.sqs-col-12.span-12 > :nth-child(1),
+  /* .col.sqs-col-12.span-12 > :nth-child(1),
   .col.sqs-col-12.span-12 > :nth-child(1),
   .col.sqs-col-12.span-12 > :nth-child(1) .sqs-image-shape-container-element {
     height: 120px !important;
     width: auto;
     position: relative;
     overflow: hidden;
-  }
+  } */
 
   .col.sqs-col-12.span-12 > :nth-child(1) img {
     height: 100%;
