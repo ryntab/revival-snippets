@@ -90,10 +90,6 @@ header#header {
 	padding-bottom: 0 !important;
 }
 
-.sqs-layout .sqs-row .sqs-block:first-child {
-	padding-top: unset !important;
-}
-
 .vertical-divider {
 	background-color: white;
 	height: 100%;
