@@ -32,18 +32,6 @@
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-/* // #page {
-//   max-width: 100% !important;
-//   overflow: hidden;
-//   padding: unset !important;
-// }
-
-// .row.sqs-row {
-// 	max-width: 1400px;
-// 	margin: auto;
-// } */
-
-
 .background-svg {
 	opacity: 0.4;
 	background-image: url('https://bantanaoriginbucket.s3.amazonaws.com/Mask+Group+4.svg');
@@ -286,6 +274,13 @@ h2.home-cta-title strong {
 }
 
 @media (max-width: 1200px) {
+	.home-wrapper {
+        margin-bottom: 20px;
+        margin-top: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
 	.background-svg {
 		display: none;
 	}
@@ -316,16 +311,14 @@ h2.home-cta-title strong {
 	.home-row {
 		flex-direction: column;
 	}
+
+	
 }
 
 @media (min-width: 1080px) and (max-width: 1200px) {
 	.home-wrapper {
 		padding-top: 40px;
 	}
-
-	// .col.sqs-col-3.span-3 {
-	//   width: calc(90vw / 3) !important;
-	// }
 }
 
 @media (min-width: 840px) and (max-width: 1200px) {
@@ -563,23 +556,14 @@ span.bio-text p {
 .line {
 	display: none;
 	width: 2px; /* Sets the width of each line */
-	// background: red;
 	z-index: 0;
 	background: linear-gradient(to bottom, #ededed, transparent);
 	height: 100%; /* Full height to stretch from top to bottom of the container */
 }
 
-// .sqs-block {
-// 	padding-top: 0px;
-// }
-
 .image-caption {
 	position: relative !important;
 }
-
-// .sqs-block {
-// 	position: unset !important;
-// }
 
 .bleed-banner {
 	position: fixed;
@@ -587,10 +571,6 @@ span.bio-text p {
 	top: 0;
 	margin-top: 100px;
 }
-
-//
-//
-//
 
 .fancybox-content {
 	max-width: 900px;

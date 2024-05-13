@@ -3,6 +3,9 @@
 	letter-spacing: unset !important;
 }
 
+.inner-popup-text p {
+	line-height: 1.6;
+}
 .popup-mini-bio {
 	margin-top: unset !important;
 }
@@ -413,15 +416,6 @@ footer {
   font-size: 16px;
 }
 
-/* Media Queries */
-@media (max-width: 1480px) {
-	.home-row,
-	.home-shoutout,
-	.footer-wrapper {
-		padding-left: 20px;
-		padding-right: 20px;
-	}
-}
 
 @media (max-width: 1420px) {
 	h2.home-cta-title {
@@ -513,13 +507,6 @@ footer {
 	.home-row {
 		margin-top: 0;
 		width: 100%;
-	}
-
-	.home-wrapper {
-		margin-bottom: 20px;
-		margin-top: 20px;
-		padding-left: 20px;
-		padding-right: 20px;
 	}
 
 	.footer-left {
@@ -820,7 +807,7 @@ span.bio-text p {
 }
 .popup-mini-bio {
 	width: 100%;
-	margin: 25px 0;
+	// margin: 25px 0;
 	border-bottom: solid 2px black;
 	display: flex;
 	align-items: start;
@@ -837,7 +824,7 @@ span.bio-text p {
 	opacity: 0.8;
 }
 .popup-mini-bio h3 {
-	margin: 0;
+	margin: 0px;
 	margin-bottom: 10px;
 }
 

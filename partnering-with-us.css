@@ -1,11 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
-/* Global Styles */
-* {
-  font-family: "Montserrat", sans-serif !important;
-  font-style: normal;
-}
-  h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6 {
 	color: white !important;
 }
 
@@ -64,35 +58,6 @@ p {
   max-width: 1400px !important;
 }
 
-header#header {
-  background-color: black !important;
-
-  top: 0 !important;
-}
-
-#mainNavigation > :nth-child(4) {
-  display: none;
-}
-
-#footer {
-  display: none;
-}
-
-nav#mainNavigation .external a {
-  border: solid 1px white;
-  margin: 0;
-  padding-left: 16px;
-  padding-right: 16px;
-}
-
-.align-left {
-  align-items: flex-start;
-}
-
-.align-right {
-  align-items: flex-end;
-}
-
 .sqs-html-content a {
   padding-bottom: 4px;
   position: relative;
@@ -129,25 +94,6 @@ nav#mainNavigation .external a {
   left: 0;
   overflow: hidden;
   z-index: 1;
-}
-
-.black-button {
-  background-color: transparent;
-  font-size: 14px;
-  padding: 8px 16px;
-}
-
-.flex-row {
-  display: flex;
-  flex-direction: row;
-}
-
-.justify-between {
-  justify-content: space-between !important;
-}
-
-.justify-end {
-  justify-content: flex-end !important;
 }
 
 .sqs-block {
